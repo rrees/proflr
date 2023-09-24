@@ -1,10 +1,10 @@
 
 async function about(ctx) {
-	ctx.body = 'About this application';
+	ctx.render('about', {});
 }
 
 async function root(ctx) {
-	ctx.body = 'Hello from Koa!';
+	ctx.render('home', {});
 }
 
 module.exports = {

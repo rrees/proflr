@@ -3,16 +3,20 @@ const Koa = require('koa');
 
 const Router = require('koa-router');
 
+const nunjucks = require('koa-nunjucks-async');
+
 const handlers = require('./handlers');
 
 const server = new Koa();
 
 const router = new Router();
 
-console.log(handlers);
 
 router.get("/", handlers.root);
 router.get("/about", handlers.about);
 
+const nunjucksOptions = {
+	ext: '.njk',
+}
 
-server.use(router.routes()).listen(3001);
+server.use(nunjucks('views', nunjucksOptions)).use(router.routes()).listen(3001);
